@@ -1,0 +1,1476 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Warm Autumnal Color Palette */
+    --primary: #8B4513;           /* Warm saddle brown */
+    --primary-dark: #6B3410;      /* Deep chocolate brown */
+    --accent: #D2691E;            /* Burnt orange/terracotta */
+    --accent-light: #E6956F;      /* Light terracotta */
+
+    /* Text colors */
+    --text-primary: #4A3222;      /* Warm dark brown */
+    --text-secondary: #7A6454;    /* Warm medium brown */
+    --text-light: #9B8878;        /* Warm light brown */
+
+    /* Neutrals with warm undertones */
+    --border: #E8DDD1;            /* Warm cream border */
+    --bg-warm: #FAF7F2;           /* Warm off-white */
+    --bg-accent: #FFF8F0;         /* Peachy cream */
+    --white: #FFFEFB;             /* Warm white */
+
+    /* Spacing - condensed */
+    --container-width: 1000px;
+    --section-padding: 80px;
+    --gap-large: 60px;
+    --gap-medium: 40px;
+    --gap-small: 20px;
+}
+
+/* Dark Mode Color Palette */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Warm Dark Mode Palette */
+        --primary: #F4A460;           /* Sandy brown - brighter for better visibility */
+        --primary-dark: #D2691E;      /* Burnt orange */
+        --accent: #F4B896;            /* Light peachy orange */
+        --accent-light: #FFD4B3;      /* Very light peach */
+
+        /* Dark mode text colors - High contrast */
+        --text-primary: #F5EDE3;      /* Very light warm cream for primary text */
+        --text-secondary: #D9C9BA;    /* Lighter warm beige for secondary */
+        --text-light: #B8A89A;        /* Medium warm brown */
+
+        /* Dark mode backgrounds */
+        --border: #3D3028;            /* Dark warm border */
+        --bg-warm: #1A1410;           /* Very dark warm brown */
+        --bg-accent: #252018;         /* Dark brown with warmth */
+        --white: #0F0D0A;             /* Almost black with brown tint */
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* Changed to serif fonts */
+    font-family: Georgia, 'Times New Roman', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    line-height: 1.8;
+    color: var(--text-primary);
+    background: var(--white);
+    font-size: 18px;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+section {
+    padding: var(--section-padding) 0;
+}
+
+/* ===================================
+   Typography
+   =================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    /* Elegant serif font for headings */
+    font-family: 'Garamond', 'Georgia', 'Baskerville', 'Palatino Linotype', 'Times New Roman', serif;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--primary-dark);
+    letter-spacing: 0.01em;
+}
+
+h1 {
+    font-size: 4.25rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+h2 {
+    font-size: 3.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.125rem;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+/* ===================================
+   Navigation
+   =================================== */
+
+.nav {
+    padding: var(--gap-medium) 0;
+    background: var(--primary-dark);
+    border-bottom: 1px solid var(--primary-dark);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Garamond', 'Georgia', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: 0.05em;
+}
+
+.logo-icon {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent-light);
+}
+
+/* ===================================
+   Buttons
+   =================================== */
+
+.btn {
+    display: inline-block;
+    padding: 16px 36px;
+    border: 2px solid var(--primary);
+    background: var(--white);
+    color: var(--primary);
+    font-size: 1.125rem;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    font-family: Georgia, serif;
+}
+
+.btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-large {
+    padding: 20px 48px;
+    font-size: 1.25rem;
+}
+
+/* ===================================
+   Hero Section
+   =================================== */
+
+.hero {
+    padding: 80px 0 60px;
+    display: flex;
+    align-items: center;
+}
+
+.hero .container {
+    max-width: var(--container-width);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: var(--gap-large);
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    color: var(--primary-dark);
+    letter-spacing: 0.005em;
+}
+
+.hero-subtitle {
+    font-size: 1.375rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.hero-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img,
+.hero-image .screenshot-placeholder {
+    max-width: 400px;
+    width: 100%;
+}
+
+.phone-mockup {
+    max-width: 400px;
+    margin: 0 auto;
+    border: 1px solid var(--border);
+    padding: 20px;
+    background: var(--bg-warm);
+}
+
+.phone-screen {
+    background: var(--white);
+    border: 1px solid var(--border);
+    aspect-ratio: 9 / 19.5;
+}
+
+.app-preview {
+    padding: 20px;
+}
+
+.preview-header {
+    height: 50px;
+    background: var(--accent-light);
+    border: 1px solid var(--border);
+    margin-bottom: 16px;
+}
+
+.preview-card {
+    height: 80px;
+    background: var(--bg-warm);
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+}
+
+.gradient-text {
+    color: var(--accent);
+}
+
+/* ===================================
+   Section Styles
+   =================================== */
+
+.section-title {
+    font-size: 2.75rem;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+.section-subtitle {
+    font-size: 1.375rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--gap-large);
+    line-height: 1.7;
+}
+
+/* ===================================
+   Features Section
+   =================================== */
+
+.features {
+    padding: var(--section-padding) 0;
+}
+
+.features-split {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-large);
+    margin-top: var(--gap-large);
+}
+
+.feature-column {
+    padding: 0;
+}
+
+.feature-column-title {
+    font-size: 2rem;
+    margin-bottom: var(--gap-medium);
+    font-weight: 400;
+    color: var(--primary-dark);
+    text-align: center;
+}
+
+.feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-medium);
+}
+
+.feature-item {
+    padding: 0;
+}
+
+.feature-item h4 {
+    font-size: 1.375rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.feature-item p {
+    color: var(--text-secondary);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* ===================================
+   CTA Section
+   =================================== */
+
+.cta {
+    background: var(--primary-dark);
+    text-align: center;
+    padding: 120px 0;
+}
+
+.cta-content h2 {
+    color: var(--white);
+    font-size: 3.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.cta-content p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.download-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.download-buttons .btn {
+    background: var(--white);
+    color: var(--primary-dark);
+    border-color: var(--white);
+    font-size: 1.125rem;
+    padding: 16px 40px;
+}
+
+.download-buttons .btn:hover {
+    background: var(--accent-light);
+    border-color: var(--accent-light);
+    color: var(--white);
+}
+
+/* ===================================
+   Footer
+   =================================== */
+
+.footer {
+    background: var(--bg-warm);
+    border-top: 1px solid var(--border);
+    padding: var(--gap-large) 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--gap-medium);
+}
+
+.footer-section h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+.footer-section p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-nav a {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--accent);
+}
+
+/* ===================================
+   Page Hero (About & Tutorial)
+   =================================== */
+
+.page-hero {
+    padding: var(--gap-large) 0;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 4.25rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.01em;
+}
+
+.page-subtitle {
+    font-size: 1.875rem;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Tutorial Selector */
+.tutorial-selector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-medium);
+    max-width: 700px;
+    margin: var(--gap-large) auto 0;
+}
+
+.tutorial-selector-btn {
+    background: var(--bg-warm);
+    border: 2px solid var(--border);
+    padding: var(--gap-medium);
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: block;
+}
+
+.tutorial-selector-btn:hover {
+    background: var(--bg-accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.tutorial-selector-btn h3 {
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+    font-size: 1.625rem;
+    font-weight: 500;
+}
+
+.tutorial-selector-btn p {
+    color: var(--text-secondary);
+    font-size: 1.0625rem;
+    margin: 0;
+}
+
+/* ===================================
+   Story Section (About)
+   =================================== */
+
+.story {
+    padding: var(--section-padding) 0;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-medium);
+}
+
+.content-text h2 {
+    margin-bottom: 1.5rem;
+}
+
+.content-text p {
+    margin-bottom: 1.5rem;
+}
+
+.image-placeholder,
+.photo-placeholder,
+.gallery-placeholder {
+    background: var(--bg-warm);
+    border: 1px solid var(--border);
+    padding: 4rem 2rem;
+    text-align: center;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.placeholder-icon,
+.avatar-icon,
+.gallery-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.image-placeholder p,
+.photo-placeholder p,
+.gallery-placeholder p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* ===================================
+   Gallery Section (About)
+   =================================== */
+
+.gallery {
+    border-top: 1px solid var(--border);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap-small);
+}
+
+.gallery-item {
+    overflow: hidden;
+}
+
+.gallery-placeholder {
+    min-height: 250px;
+}
+
+/* ===================================
+   Tutorial Sections
+   =================================== */
+
+.quick-start {
+    padding: var(--section-padding) 0;
+}
+
+.tutorial-intro {
+    max-width: 600px;
+    margin: 0 auto var(--gap-large);
+}
+
+.tutorial-intro h2 {
+    margin-bottom: 1rem;
+}
+
+/* Tutorial Steps */
+.tutorial-section {
+    padding: var(--section-padding) 0;
+}
+
+.tutorial-section.alt {
+    background: var(--white);
+}
+
+.tutorial-steps {
+    max-width: 700px;
+    margin: var(--gap-medium) auto 0;
+}
+
+.step-card {
+    margin-bottom: calc(var(--gap-large) * 1.5);
+    background: none;
+    padding: 0;
+}
+
+.step-number {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: var(--accent);
+    color: var(--white);
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    border-radius: 50%;
+}
+
+.step-content h3 {
+    margin-bottom: 1rem;
+    font-size: 1.875rem;
+    font-weight: 500;
+}
+
+.step-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1875rem;
+}
+
+.step-list {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.step-list li {
+    padding: 0.5rem 0;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.step-list li::before {
+    content: '• ';
+    color: var(--accent);
+}
+
+.step-tips {
+    background: var(--bg-accent);
+    padding: 1.25rem;
+    border-left: 3px solid var(--accent);
+    margin-top: 1rem;
+}
+
+.step-tips strong {
+    color: var(--primary);
+}
+
+/* Common Features */
+.common-features {
+    padding: var(--section-padding) 0;
+}
+
+.features-accordion {
+    max-width: 700px;
+    margin: var(--gap-medium) auto 0;
+}
+
+.accordion-item {
+    background: none;
+    margin-bottom: var(--gap-large);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: var(--gap-medium);
+}
+
+.accordion-header {
+    padding: 0;
+    cursor: pointer;
+}
+
+.accordion-header h3 {
+    font-size: 1.625rem;
+    margin: 0 0 1rem 0;
+    font-weight: 500;
+}
+
+.accordion-content {
+    padding: 0;
+}
+
+.accordion-content p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 1.1875rem;
+    line-height: 1.8;
+}
+/* ===================================
+   Image Placeholders
+   =================================== */
+
+.image-placeholder {
+    background: var(--bg-warm);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.image-placeholder p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.placeholder-hint {
+    color: var(--text-light);
+    font-size: 0.9375rem;
+}
+
+/* App Showcase Section */
+.app-showcase {
+    padding: var(--section-padding) 0;
+}
+
+.app-showcase .container {
+    max-width: 1400px;
+}
+
+.app-image {
+    margin-top: var(--gap-medium);
+}
+
+.app-image .image-placeholder {
+    min-height: 700px;
+}
+
+.app-image img {
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+}
+
+/* Key Features Section */
+.key-features {
+    padding: var(--section-padding) 0;
+    background: var(--bg-warm);
+}
+
+.key-features .section-subtitle {
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.key-features-grid {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--gap-large) * 1.5);
+    margin-top: var(--gap-large);
+}
+
+.key-feature-item {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: var(--gap-large);
+    align-items: center;
+}
+
+.key-feature-item:nth-child(even) {
+    grid-template-columns: 1fr 400px;
+}
+
+.key-feature-item:nth-child(even) .key-feature-image {
+    order: 2;
+}
+
+.key-feature-item:nth-child(even) .key-feature-content {
+    order: 1;
+}
+
+.key-feature-image {
+    width: 100%;
+}
+
+.key-feature-content {
+    text-align: left;
+}
+
+.key-feature-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: var(--primary-dark);
+}
+
+.key-feature-content p {
+    font-size: 1.1875rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* Screenshots Section */
+.screenshots {
+    padding: var(--section-padding) 0;
+}
+
+.screenshots .container {
+    max-width: 1200px;
+}
+
+.screenshot-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-large);
+    margin-top: var(--gap-large);
+}
+
+.screenshot-item {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: var(--gap-large);
+    align-items: center;
+}
+
+.screenshot-item:nth-child(even) {
+    grid-template-columns: 1fr 400px;
+}
+
+.screenshot-item:nth-child(even) .screenshot-image {
+    order: 2;
+}
+
+.screenshot-item:nth-child(even) .screenshot-content {
+    order: 1;
+}
+
+.screenshot-image {
+    width: 100%;
+}
+
+.screenshot-placeholder {
+    min-height: 700px;
+    max-width: 400px;
+}
+
+.screenshot-image img,
+.screenshot-placeholder {
+    display: block;
+}
+
+.screenshot-content {
+    text-align: left;
+}
+
+.screenshot-content h3 {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    color: var(--primary-dark);
+}
+
+.screenshot-content p {
+    font-size: 1.3125rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* Story Image */
+.story-image {
+    margin-top: var(--gap-large);
+}
+
+.story-image .image-placeholder {
+    min-height: 500px;
+}
+
+.story-image img {
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+}
+
+/* Team Section */
+.team {
+    padding: var(--section-padding) 0;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-large);
+    margin-top: var(--gap-large);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team-member {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: var(--gap-medium);
+    align-items: start;
+    background: var(--bg-warm);
+    padding: var(--gap-medium);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.team-photo {
+    width: 250px;
+}
+
+.team-photo .image-placeholder {
+    min-height: 250px;
+    aspect-ratio: 1;
+}
+
+.team-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.team-info {
+    text-align: left;
+}
+
+.team-member h3 {
+    font-size: 1.625rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--primary-dark);
+}
+
+.team-degree {
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: 400;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.team-bio {
+    font-size: 1.0625rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.team-contact {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.team-email,
+.team-linkedin {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.team-email strong {
+    color: var(--text-primary);
+}
+
+.team-email a,
+.team-linkedin a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.team-email a:hover,
+.team-linkedin a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+/* Tutorial Images */
+.tutorial-image {
+    min-height: 500px;
+    max-width: 350px;
+    margin-top: 1.5rem;
+}
+
+.tutorial-image img {
+    max-width: 350px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+}
+
+/* When real images are added */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.app-image img,
+.story-image img,
+.team-photo img,
+.tutorial-image img {
+    width: 100%;
+    border: 1px solid var(--border);
+}
+
+.screenshot-item img {
+    width: 100%;
+}
+
+/* ===================================
+   Dark Mode Specific Overrides
+   =================================== */
+
+@media (prefers-color-scheme: dark) {
+    /* Navigation adjustments */
+    .nav {
+        background: #0F0D0A;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+        color: #FFFFFF;
+    }
+
+    .nav-links a {
+        color: rgba(245, 237, 227, 0.8);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: var(--accent-light);
+    }
+
+    /* Heading contrast improvements */
+    h1, h2, h3, h4, h5, h6 {
+        color: #FFFFFF;
+    }
+
+    .hero-title {
+        color: #FFFFFF;
+    }
+
+    .section-title {
+        color: #FFFFFF;
+    }
+
+    .page-title {
+        color: #FFFFFF;
+    }
+
+    /* Button adjustments for better contrast */
+    .btn {
+        background: var(--bg-accent);
+        color: #FFFFFF;
+        border-color: var(--primary);
+    }
+
+    .btn:hover {
+        background: var(--primary);
+        color: #FFFFFF;
+    }
+
+    .btn-primary {
+        background: var(--primary);
+        color: #FFFFFF;
+        border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #FFFFFF;
+    }
+
+    /* CTA Section - lighten for dark mode */
+    .cta {
+        background: #1A1410;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .cta-content h2 {
+        color: #FFFFFF;
+    }
+
+    .cta-content p {
+        color: var(--text-secondary);
+    }
+
+    .download-buttons .btn {
+        background: var(--primary);
+        color: #FFFFFF;
+        border-color: var(--primary);
+    }
+
+    .download-buttons .btn:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #FFFFFF;
+    }
+
+    /* Image placeholders - darker version */
+    .image-placeholder,
+    .photo-placeholder,
+    .gallery-placeholder {
+        background: var(--bg-accent);
+        border: 1px solid var(--border);
+    }
+
+    .screenshot-placeholder {
+        background: var(--bg-accent);
+        border: 1px solid var(--border);
+    }
+
+    /* Key Features section */
+    .key-features {
+        background: var(--bg-accent);
+    }
+
+    /* Footer adjustments */
+    .footer {
+        background: var(--bg-accent);
+        border-top: 1px solid var(--border);
+    }
+
+    .footer-section h4 {
+        color: #FFFFFF;
+    }
+
+    /* Feature headings */
+    .feature-item h4 {
+        color: var(--primary);
+    }
+
+    .feature-column-title {
+        color: #FFFFFF;
+    }
+
+    .key-feature-content h3 {
+        color: #FFFFFF;
+    }
+
+    .screenshot-content h3 {
+        color: #FFFFFF;
+    }
+
+    .step-content h3 {
+        color: #FFFFFF;
+    }
+
+    .accordion-header h3 {
+        color: #FFFFFF;
+    }
+
+    .tutorial-selector-btn h3 {
+        color: #FFFFFF;
+    }
+
+    .team-member h3,
+    .team-card h3 {
+        color: #FFFFFF;
+    }
+
+    /* Team member cards */
+    .team-member {
+        background: var(--bg-accent);
+        border: 1px solid var(--border);
+    }
+
+    .team-degree {
+        color: var(--accent);
+    }
+
+    .team-bio {
+        color: var(--text-secondary);
+    }
+
+    .team-contact {
+        border-top: 1px solid var(--border);
+    }
+
+    .team-email strong {
+        color: var(--text-primary);
+    }
+
+    .team-email a,
+    .team-linkedin a {
+        color: var(--primary);
+    }
+
+    .team-email a:hover,
+    .team-linkedin a:hover {
+        color: var(--accent-light);
+    }
+
+    /* Phone mockup */
+    .phone-mockup {
+        border: 1px solid var(--border);
+        background: var(--bg-accent);
+    }
+
+    .phone-screen {
+        background: var(--bg-warm);
+        border: 1px solid var(--border);
+    }
+
+    .preview-header {
+        background: var(--primary);
+        border: 1px solid var(--border);
+    }
+
+    .preview-card {
+        background: var(--bg-accent);
+        border: 1px solid var(--border);
+    }
+
+    /* Step tips in tutorials */
+    .step-tips {
+        background: var(--bg-accent);
+        border-left: 3px solid var(--accent);
+    }
+
+    /* Tutorial selector buttons */
+    .tutorial-selector-btn {
+        background: var(--bg-accent);
+        border: 2px solid var(--border);
+    }
+
+    .tutorial-selector-btn:hover {
+        background: var(--bg-warm);
+        border-color: var(--accent);
+    }
+
+    /* Accordion items */
+    .accordion-item {
+        border-bottom: 1px solid var(--border);
+    }
+
+    /* Images - add subtle border for dark mode */
+    .app-image img,
+    .story-image img,
+    .team-photo img,
+    .tutorial-image img {
+        border: 1px solid var(--border);
+    }
+
+    /* Box shadows - adjust for dark mode */
+    .app-image img,
+    .story-image img,
+    .tutorial-image img {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+
+@media (max-width: 968px) {
+    .team-member {
+        grid-template-columns: 200px 1fr;
+        gap: var(--gap-small);
+    }
+
+    .team-photo {
+        width: 200px;
+    }
+
+    .team-photo .image-placeholder {
+        min-height: 200px;
+    }
+
+    .key-feature-item,
+    .screenshot-item {
+        grid-template-columns: 1fr !important;
+        gap: var(--gap-medium);
+    }
+
+    .key-feature-item:nth-child(even) .key-feature-image,
+    .key-feature-item:nth-child(even) .key-feature-content,
+    .screenshot-item:nth-child(even) .screenshot-image,
+    .screenshot-item:nth-child(even) .screenshot-content {
+        order: unset;
+    }
+
+    .key-feature-image,
+    .screenshot-image {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .screenshot-placeholder {
+        min-height: 600px;
+        max-width: 350px;
+    }
+
+    .key-feature-content,
+    .screenshot-content {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 80px;
+        --gap-large: 60px;
+        --gap-medium: 30px;
+    }
+
+    .container {
+        padding: 0 24px;
+    }
+
+    h1 {
+        font-size: 2.75rem;
+    }
+
+    h2 {
+        font-size: 2.25rem;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 80px 0 60px;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: var(--gap-medium);
+    }
+
+    .hero-image {
+        order: -1;
+    }
+
+    .hero-content {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .hero-title {
+        font-size: 2.75rem;
+    }
+
+    .section-title {
+        font-size: 2.25rem;
+    }
+
+    .page-title {
+        font-size: 2.75rem;
+    }
+
+    .tutorial-selector {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .features-split {
+        grid-template-columns: 1fr;
+    }
+
+    .team-member {
+        grid-template-columns: 1fr;
+        gap: var(--gap-small);
+    }
+
+    .team-photo {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .team-photo .image-placeholder {
+        min-height: 300px;
+    }
+
+    .team-info {
+        text-align: center;
+    }
+
+    .screenshot-placeholder {
+        min-height: 500px;
+        max-width: 300px;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
+    }
+
+    .hero-buttons,
+    .download-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --section-padding: 60px;
+    }
+
+    body {
+        font-size: 17px;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    h1, .hero-title {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9375rem;
+    }
+}
