@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roof - Property Management Made Simple</title>
     <meta name="description" content="The modern property management app for landlords and renters. Simplify rent collection, maintenance requests, and communication.">
+    <link rel="icon" type="image/png" href="images/roof-icon.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="images/roof-icon-dark.png" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,9 +22,10 @@
                     Roof
                 </a>
                 <div class="nav-links">
-                    <a href="index.html" class="active">Home</a>
-                    <a href="about.html">About</a>
+                    <a href="index.html" class="active">About</a>
+                    <a href="team.html">Team</a>
                     <a href="tutorial.html">Tutorial</a>
+                    <a href="index.html#download">Download</a>
                 </div>
             </div>
         </div>
@@ -108,11 +111,10 @@
             <div class="key-features-grid">
                 <div class="key-feature-item">
                     <div class="key-feature-image">
-                        <!-- Replace with: <img src="images/ai-maintenance.png" alt="AI maintenance request"> -->
-                        <div class="image-placeholder screenshot-placeholder">
-                            <p>AI Maintenance</p>
-                            <span class="placeholder-hint">Mobile Screenshot<br>400 x 850px</span>
-                        </div>
+                        <picture>
+                            <source srcset="images/smart-fill-dark.png" media="(prefers-color-scheme: dark)">
+                            <img src="images/smart-fill.png" alt="AI-powered smart fill maintenance request">
+                        </picture>
                     </div>
                     <div class="key-feature-content">
                         <h3>AI-Powered Maintenance Requests</h3>
@@ -122,11 +124,10 @@
 
                 <div class="key-feature-item">
                     <div class="key-feature-image">
-                        <!-- Replace with: <img src="images/document-chat.png" alt="Document chat"> -->
-                        <div class="image-placeholder screenshot-placeholder">
-                            <p>Document Chat</p>
-                            <span class="placeholder-hint">Mobile Screenshot<br>400 x 850px</span>
-                        </div>
+                        <picture>
+                            <source srcset="images/lease-summary-dark.png" media="(prefers-color-scheme: dark)">
+                            <img src="images/lease-summary.png" alt="Document chat">
+                        </picture>
                     </div>
                     <div class="key-feature-content">
                         <h3>Chat with Your Lease Documents</h3>
@@ -158,11 +159,10 @@
 
                 <div class="screenshot-item">
                     <div class="screenshot-image">
-                        <!-- Replace with: <img src="images/payments.png" alt="Payment tracking"> -->
-                        <div class="image-placeholder screenshot-placeholder">
-                            <p>Payment Tracking</p>
-                            <span class="placeholder-hint">Mobile Screenshot<br>400 x 850px</span>
-                        </div>
+                        <picture>
+                            <source srcset="images/payments-dark.png" media="(prefers-color-scheme: dark)">
+                            <img src="images/payments.png" alt="Landlord dashboard">
+                        </picture>
                     </div>
                     <div class="screenshot-content">
                         <h3>Payments</h3>
@@ -173,8 +173,8 @@
                 <div class="screenshot-item">
                     <div class="screenshot-image">
                         <picture>
-                            <source srcset="images/ll-mr-dark.png" media="(prefers-color-scheme: dark)">
-                            <img src="images/ll-mr.png" alt="Maintenance requests">
+                            <source srcset="images/MR-list-dark.png" media="(prefers-color-scheme: dark)">
+                            <img src="images/MR-list.png" alt="Maintenance Request List">
                         </picture>
                     </div>
                     <div class="screenshot-content">
@@ -187,16 +187,27 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta">
+    <section class="cta" id="download">
         <div class="container">
             <div class="cta-content">
                 <h2>Ready to Raise the Roof?</h2>
                 <p>Download Roof and simplify your property management today</p>
                 <div class="download-buttons">
                     <!-- Replace # with your TestFlight link -->
-                    <a href="#" class="btn btn-primary btn-large">Join TestFlight Beta</a>
-                    <!-- Replace # with your Google Play Store or APK download link -->
-                    <a href="#" class="btn btn-primary btn-large">Download for Android</a>
+                    <a href="https://testflight.apple.com/join/YNEKXPEj" 
+                    class="btn btn-primary btn-large" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                    Join TestFlight Beta
+                    </a>
+
+                    <!-- Google Play / APK link -->
+                    <a href="https://drive.google.com/drive/folders/1TojejftaxAUIUoE_wD7cv5zmzA2aaxBh?usp=sharing" 
+                    class="btn btn-primary btn-large" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                    Download for Android
+                    </a>
                 </div>
             </div>
         </div>
