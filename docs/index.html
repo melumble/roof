@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="nav">
         <div class="container">
             <div class="nav-content">
@@ -21,6 +20,9 @@
                     </picture>
                     Roof
                 </a>
+
+                <div class="hamburger">&#9776;</div>
+
                 <div class="nav-links">
                     <a href="index.html" class="active">About</a>
                     <a href="team.html">Team</a>
@@ -31,12 +33,11 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
-                    <h1 class="hero-title">Property Management Made Simple</h1>
+                    <h1 class="hero-title">Property Management Under One Roof</h1>
                     <p class="hero-subtitle">The modern app connecting landlords and renters. Streamline payments, maintenance requests, and communication all in one place.</p>
                 </div>
                 <div class="hero-image">
@@ -49,7 +50,6 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
             <h2 class="section-title">Features for Everyone</h2>
@@ -102,7 +102,6 @@
         </div>
     </section>
 
-    <!-- Key Features Section -->
     <section class="key-features">
         <div class="container">
             <h2 class="section-title">Powered by AI</h2>
@@ -138,7 +137,6 @@
         </div>
     </section>
 
-    <!-- Screenshots Section -->
     <section class="screenshots">
         <div class="container">
             <h2 class="section-title">See It In Action</h2>
@@ -186,14 +184,12 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta" id="download">
         <div class="container">
             <div class="cta-content">
                 <h2>Ready to Raise the Roof?</h2>
                 <p>Download Roof and simplify your property management today</p>
                 <div class="download-buttons">
-                    <!-- Replace # with your TestFlight link -->
                     <a href="https://testflight.apple.com/join/YNEKXPEj" 
                     class="btn btn-primary btn-large" 
                     target="_blank" 
@@ -201,7 +197,6 @@
                     Join TestFlight Beta
                     </a>
 
-                    <!-- Google Play / APK link -->
                     <a href="https://drive.google.com/drive/folders/1TojejftaxAUIUoE_wD7cv5zmzA2aaxBh?usp=sharing" 
                     class="btn btn-primary btn-large" 
                     target="_blank" 
@@ -213,21 +208,54 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>Roof</h4>
-                    <p>Property management made simple.</p>
+                    <p>Property management under one roof.</p>
                 </div>
                 <nav class="footer-nav">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
+                    <a href="index.html">About</a>
+                    <a href="team.html">Team</a>
                     <a href="tutorial.html">Tutorial</a>
+                    <a href="index.html#download">Download</a>
                 </nav>
             </div>
         </div>
     </footer>
+<script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-links a');
+
+    // Toggle menu
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+        
+        // Change icon from ☰ to ✕
+        if (navLinks.classList.contains('show')) {
+            hamburger.innerHTML = '&#10005;'; // X symbol
+        } else {
+            hamburger.innerHTML = '&#9776;'; // Hamburger symbol
+        }
+    });
+
+    // Close menu when a link is clicked
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('show');
+            hamburger.innerHTML = '&#9776;';
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+            navLinks.classList.remove('show');
+            hamburger.innerHTML = '&#9776;';
+        }
+    });
+</script>
 </body>
 </html>

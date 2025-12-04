@@ -101,12 +101,7 @@ section {
    Typography
    =================================== */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     /* Elegant serif font for headings */
     font-family: 'Garamond', 'Georgia', 'Baskerville', 'Palatino Linotype', 'Times New Roman', serif;
     font-weight: 500;
@@ -146,19 +141,29 @@ a {
 }
 
 /* ===================================
-   Navigation
+   Navigation (UPDATED)
    =================================== */
 
 .nav {
-    padding: var(--gap-medium) 0;
+    padding: 0;
+    height: 80px; /* Fixed height for stability */
     background: var(--primary-dark);
     border-bottom: 1px solid var(--primary-dark);
+    position: relative;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.nav .container {
+    width: 100%;
 }
 
 .nav-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
 }
 
 .logo {
@@ -170,6 +175,7 @@ a {
     align-items: center;
     gap: 12px;
     letter-spacing: 0.05em;
+    z-index: 1001;
 }
 
 .logo-icon {
@@ -178,21 +184,133 @@ a {
     object-fit: contain;
 }
 
+/* Desktop Navigation */
 .nav-links {
     display: flex;
     gap: 2.5rem;
+    margin-left: auto;
 }
 
 .nav-links a {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.05rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-decoration: none;
     position: relative;
-    transition: color 0.2s ease;
+    display: block;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--accent-light);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent-light);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hamburger Icon (Hidden on Desktop) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    z-index: 1001;
+    color: var(--white);
+    font-size: 1.75rem;
+    padding: 10px;
+    user-select: none;
+    transition: color 0.2s ease;
+    line-height: 1;
+}
+
+.hamburger:hover {
+    color: var(--accent-light);
+}
+
+/* Mobile Navigation Logic */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block; /* Show only on mobile */
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 80px; /* Directly below the navbar */
+        left: 0;
+        right: 0;
+        
+        /* Card styling */
+        background: var(--bg-warm);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        
+        /* Layout */
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 20px 0;
+        margin-left: 0;
+        
+        /* Animation states */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        pointer-events: none;
+    }
+
+    .nav-links.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .nav-links a {
+        color: var(--text-primary);
+        font-size: 1.25rem;
+        padding: 15px 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+        color: var(--primary);
+        background: rgba(139, 69, 19, 0.05);
+    }
+
+    .nav-links a::after {
+        display: none; /* No underline on mobile */
+    }
+}
+
+/* Dark Mode Mobile Nav Override */
+@media (prefers-color-scheme: dark) and (max-width: 768px) {
+    .nav-links {
+        background: var(--bg-accent);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    .nav-links a {
+        color: var(--text-primary);
+    }
+
+    .nav-links a:hover {
+        color: var(--accent);
+        background: rgba(255, 255, 255, 0.03);
+    }
 }
 
 /* ===================================
@@ -299,14 +417,16 @@ a {
 .phone-mockup {
     max-width: 400px;
     margin: 0 auto;
-    border: 1px solid var(--border);
+    /* REMOVED BACKGROUND AND BORDER */
+    background: transparent;
+    border: none;
     padding: 20px;
-    background: var(--bg-warm);
 }
 
 .phone-screen {
-    background: var(--white);
-    border: 1px solid var(--border);
+    /* REMOVED BACKGROUND AND BORDER */
+    background: transparent;
+    border: none;
     aspect-ratio: 9 / 19.5;
 }
 
@@ -552,6 +672,8 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* REMOVED BACKGROUND */
+    background: transparent;
 }
 
 .tutorial-btn-image img {
@@ -559,6 +681,8 @@ a {
     height: auto;
     object-fit: contain;
     display: block;
+    /* REMOVED BORDER */
+    border: none;
 }
 
 .tutorial-selector-btn h3 {
@@ -596,11 +720,15 @@ a {
     margin-bottom: 1.5rem;
 }
 
+/* ===================================
+   IMAGE PLACEHOLDERS (Reset to Transparent)
+   =================================== */
 .image-placeholder,
 .photo-placeholder,
 .gallery-placeholder {
-    background: var(--bg-warm);
-    border: 1px solid var(--border);
+    /* REMOVED BACKGROUND AND BORDER - Set to transparent */
+    background: transparent;
+    border: none;
     padding: 4rem 2rem;
     text-align: center;
     min-height: 300px;
@@ -806,7 +934,7 @@ a {
 
 .community-photo {
     flex: 0 0 100%;
-    max-width: 520px;
+    max-width: 320px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -815,6 +943,7 @@ a {
     background: transparent;
     border: none;
     box-shadow: none;
+    margin: 0 auto;
 }
 
 .community-photo img {
@@ -906,34 +1035,9 @@ a {
 }
 
 /* ===================================
-   Image Placeholders
+   App Showcase Section
    =================================== */
 
-.image-placeholder {
-    background: var(--bg-warm);
-    border: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem 2rem;
-    text-align: center;
-    width: 100%;
-}
-
-.image-placeholder p {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-}
-
-.placeholder-hint {
-    color: var(--text-light);
-    font-size: 0.9375rem;
-}
-
-/* App Showcase Section */
 .app-showcase {
     padding: var(--section-padding) 0;
 }
@@ -948,12 +1052,15 @@ a {
 
 .app-image .image-placeholder {
     min-height: 700px;
+    background: transparent; /* Force transparent */
+    border: none;
 }
 
 .app-image img {
     width: 100%;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
+    border: none; /* No border */
 }
 
 /* Key Features Section */
@@ -1058,6 +1165,8 @@ a {
 .screenshot-placeholder {
     min-height: 700px;
     max-width: 400px;
+    background: transparent;
+    border: none;
 }
 
 .screenshot-image img,
@@ -1089,12 +1198,15 @@ a {
 
 .story-image .image-placeholder {
     min-height: 500px;
+    background: transparent;
+    border: none;
 }
 
 .story-image img {
     width: 100%;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
+    border: none;
 }
 
 /* Team Section */
@@ -1130,13 +1242,16 @@ a {
 .team-photo .image-placeholder {
     min-height: 250px;
     aspect-ratio: 1;
+    background: transparent; /* No background */
+    border: none; /* No border */
 }
 
 .team-photo img {
     width: 100%;
     height: auto;
     border-radius: 8px;
-    border: 1px solid var(--border);
+    border: none; /* No border */
+    background: transparent; /* No background */
 }
 
 .team-info {
@@ -1219,7 +1334,7 @@ img {
 .team-photo img,
 .tutorial-image img {
     width: 100%;
-    border: 1px solid var(--border);
+    border: none; /* Removed border */
 }
 
 .screenshot-item img {
@@ -1252,12 +1367,7 @@ img {
     }
 
     /* Heading contrast improvements */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    h1, h2, h3, h4, h5, h6 {
         color: #FFFFFF;
     }
 
@@ -1297,6 +1407,10 @@ img {
         color: #FFFFFF;
     }
 
+    .hamburger {
+        color: white;
+    }
+
     /* CTA Section - lighten for dark mode */
     .cta {
         background: #1A1410;
@@ -1328,13 +1442,13 @@ img {
     .image-placeholder,
     .photo-placeholder,
     .gallery-placeholder {
-        background: var(--bg-accent);
-        border: 1px solid var(--border);
+        background: transparent; /* No background */
+        border: none;
     }
 
     .screenshot-placeholder {
-        background: var(--bg-accent);
-        border: 1px solid var(--border);
+        background: transparent; /* No background */
+        border: none;
     }
 
     /* Key Features section */
@@ -1452,13 +1566,13 @@ img {
 
     /* Phone mockup */
     .phone-mockup {
-        border: 1px solid var(--border);
-        background: var(--bg-accent);
+        border: none;
+        background: transparent;
     }
 
     .phone-screen {
-        background: var(--bg-warm);
-        border: 1px solid var(--border);
+        background: transparent;
+        border: none;
     }
 
     .preview-header {
@@ -1494,12 +1608,12 @@ img {
         border-bottom: 1px solid var(--border);
     }
 
-    /* Images - add subtle border for dark mode */
+    /* Images - remove border for dark mode */
     .app-image img,
     .story-image img,
     .team-photo img,
     .tutorial-image img {
-        border: 1px solid var(--border);
+        border: none; /* Removed border */
     }
 
     /* Box shadows - adjust for dark mode */
@@ -1512,6 +1626,91 @@ img {
     .btn:hover {
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
+
+    /* FAQ section dark mode */
+    .faq-section {
+        background: var(--bg-accent);
+    }
+
+    .faq-item {
+        background: var(--white);
+        border: 1px solid var(--border);
+    }
+
+    .faq-item h3 {
+        color: #FFFFFF;
+    }
+}
+
+/* ===================================
+   FAQ Section
+   =================================== */
+
+.faq-section {
+    padding: var(--section-padding) 0;
+    background: var(--bg-warm);
+}
+
+.faq-section .section-subtitle {
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--gap-large);
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-medium);
+}
+
+.faq-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: var(--gap-medium);
+}
+
+.faq-item h3 {
+    font-size: 1.375rem;
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+    font-weight: 500;
+}
+
+.faq-item p {
+    margin-bottom: 1rem;
+    font-size: 1.0625rem;
+    line-height: 1.8;
+}
+
+.faq-item p:last-child {
+    margin-bottom: 0;
+}
+
+.faq-item ul,
+.faq-item ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.faq-item li {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1.0625rem;
+}
+
+.faq-item ul li::marker {
+    color: var(--accent);
+}
+
+.faq-item ol li::marker {
+    color: var(--accent);
+    font-weight: 500;
 }
 
 /* ===================================
@@ -1647,10 +1846,6 @@ img {
     .screenshot-placeholder {
         min-height: 500px;
         max-width: 300px;
-    }
-
-    .nav-links {
-        gap: 1.5rem;
     }
 
     .hero-buttons,

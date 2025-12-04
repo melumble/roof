@@ -12,7 +12,6 @@
 </head>
 
 <body>
-    <!-- Navigation -->
     <nav class="nav">
         <div class="container">
             <div class="nav-content">
@@ -23,6 +22,9 @@
                     </picture>
                     Roof
                 </a>
+
+                <div class="hamburger">&#9776;</div>
+
                 <div class="nav-links">
                     <a href="index.html">About</a>
                     <a href="team.html" class="active">Team</a>
@@ -33,7 +35,6 @@
         </div>
     </nav>
 
-    <!-- Story Section -->
     <section class="story">
         <div class="container">
             <div class="content-grid">
@@ -47,14 +48,12 @@
                 </div>
             </div>
 
-            <!-- Team Photo -->
             <div class="story-image">
                 <img src="images/team-photo.jpg" alt="The Roof team">
             </div>
         </div>
     </section>
 
-    <!-- Team Section -->
     <section class="team">
         <div class="container">
             <h2 class="section-title">The Team</h2>
@@ -63,7 +62,7 @@
             <div class="team-grid">
                 <div class="team-member">
                     <div class="team-photo">
-                        <img src="images\RishenCao_headshot.jpg" alt="Rishen Cao">
+                        <img src="images/RishenCao_headshot.jpg" alt="Rishen Cao">
                     </div>
                     <div class="team-info">
                         <h3>Rishen(Kingsley) Cao</h3>
@@ -87,7 +86,7 @@
                             warmth.</p>
                         <div class="team-contact">
                             <p class="team-email"><strong>Email:</strong> <a
-                                    href="mailto:name@example.com">u1437761@utah.edu</a></p>
+                                    href="mailto:u1437761@utah.edu">u1437761@utah.edu</a></p>
 
                         </div>
                     </div>
@@ -185,38 +184,79 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta">
         <div class="container">
             <div class="cta-content">
                 <h2>Ready to Raise the Roof?</h2>
                 <p>Download Roof and simplify your property management today</p>
                 <div class="download-buttons">
-                    <!-- Replace # with your TestFlight link -->
-                    <a href="#" class="btn btn-primary btn-large">Join TestFlight Beta</a>
-                    <!-- Replace # with your Google Play Store or APK download link -->
-                    <a href="#" class="btn btn-primary btn-large">Download for Android</a>
+                    <a href="https://testflight.apple.com/join/YNEKXPEj" 
+                    class="btn btn-primary btn-large" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                    Join TestFlight Beta
+                    </a>
+
+                    <a href="https://drive.google.com/drive/folders/1TojejftaxAUIUoE_wD7cv5zmzA2aaxBh?usp=sharing" 
+                    class="btn btn-primary btn-large" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                    Download for Android
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>Roof</h4>
-                    <p>Property management made simple.</p>
+                    <p>Property management under one roof.</p>
                 </div>
                 <nav class="footer-nav">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
+                    <a href="index.html">About</a>
+                    <a href="team.html">Team</a>
                     <a href="tutorial.html">Tutorial</a>
+                    <a href="index.html#download">Download</a>
                 </nav>
             </div>
         </div>
     </footer>
-</body>
 
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const links = document.querySelectorAll('.nav-links a');
+
+        // Toggle menu
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+            
+            // Change icon from ☰ to ✕
+            if (navLinks.classList.contains('show')) {
+                hamburger.innerHTML = '&#10005;'; // X symbol
+            } else {
+                hamburger.innerHTML = '&#9776;'; // Hamburger symbol
+            }
+        });
+
+        // Close menu when a link is clicked
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('show');
+                hamburger.innerHTML = '&#9776;';
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                navLinks.classList.remove('show');
+                hamburger.innerHTML = '&#9776;';
+            }
+        });
+    </script>
+</body>
 </html>

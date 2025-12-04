@@ -5,15 +5,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutorial - Roof</title>
-    <meta name="description"
-        content="Learn how to use Roof for property management. Step-by-step guides for landlords and renters.">
+    <meta name="description" content="Learn how to use Roof for property management. Step-by-step guides for landlords and renters.">
     <link rel="icon" type="image/png" href="images/roof-icon.png" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/png" href="images/roof-icon-dark.png" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Base styles for step images */
+        .step-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: none;
+            background: transparent; /* Ensures no background */
+            border: none; /* Ensures no border */
+        }
+        
+        .step-image-container {
+            background: transparent; /* Ensures container has no background */
+        }
+
+        /* Desktop Zig-Zag Layout */
+        @media (min-width: 900px) {
+            .tutorial-steps {
+                max-width: 100%; /* Allow full width of container */
+            }
+
+            .step-card {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 80px;
+                max-width: 100%; /* Override the small card width */
+                margin-bottom: 100px;
+            }
+
+            .step-content {
+                flex: 1;
+                order: 1;
+            }
+
+            .step-image-container {
+                flex: 1;
+                order: 2;
+                display: flex;
+                justify-content: center;
+            }
+
+            .step-image-container picture {
+                width: 100%;
+                max-width: 350px; /* Control phone screenshot size */
+            }
+
+            /* Alternating Logic: Even numbered children flip */
+            .step-card:nth-child(even) {
+                flex-direction: row-reverse; /* Flips the order */
+            }
+
+            /* Community Section Special Handling */
+            .step-card.community-step {
+                display: block; /* Keep community section stacked */
+                max-width: 800px;
+                margin: 0 auto 100px;
+            }
+            
+            .step-card.community-step .step-content {
+                text-align: center;
+            }
+            
+            .step-card.community-step .step-image-container {
+                margin: 40px auto;
+            }
+        }
+
+        /* Dark Mode Adjustments for local styles */
+        @media (prefers-color-scheme: dark) {
+            .step-image-container img {
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Navigation -->
     <nav class="nav">
         <div class="container">
             <div class="nav-content">
@@ -24,6 +98,9 @@
                     </picture>
                     Roof
                 </a>
+
+                <div class="hamburger">&#9776;</div>
+
                 <div class="nav-links">
                     <a href="index.html">About</a>
                     <a href="team.html">Team</a>
@@ -34,13 +111,11 @@
         </div>
     </nav>
 
-    <!-- Tutorial Hero -->
     <section class="page-hero">
         <div class="container">
             <h1 class="page-title">Getting Started</h1>
             <p class="page-subtitle">Everything you need to know to start using Roof</p>
 
-            <!-- Role Selector -->
             <div class="tutorial-selector">
                 <a href="#landlords" class="tutorial-selector-btn">
                     <div class="tutorial-btn-image">
@@ -60,18 +135,19 @@
         </div>
     </section>
 
-    <!-- For Landlords -->
     <section id="landlords" class="tutorial-section">
         <div class="container">
             <h2 class="section-title">For Landlords</h2>
 
             <div class="tutorial-steps">
                 <div class="step-card">
-                    <div class="step-number">1</div>
                     <div class="step-content">
+                        <div class="step-number">1</div>
                         <h3>Create Your Account</h3>
                         <p>Download the Roof app and sign up using your email. Select "Landlord" as your role during
                             registration.</p>
+                    </div>
+                    <div class="step-image-container">
                         <picture>
                             <img src="images/Create_Your_Account_Landlord.png" alt="Landlord signup screen">
                         </picture>
@@ -79,11 +155,13 @@
                 </div>
 
                 <div class="step-card">
-                    <div class="step-number">2</div>
                     <div class="step-content">
+                        <div class="step-number">2</div>
                         <h3>Add Your Properties</h3>
                         <p>Tap the "+" button on your home screen to add a property. Include details like address,
                             photos, and rental terms.</p>
+                    </div>
+                    <div class="step-image-container">
                         <picture>
                             <img src="images/Add_Your_Properties.png" alt="Add property screen">
                         </picture>
@@ -91,11 +169,13 @@
                 </div>
 
                 <div class="step-card">
-                    <div class="step-number">3</div>
                     <div class="step-content">
+                        <div class="step-number">3</div>
                         <h3>Invite Tenants</h3>
                         <p>Generate an invite link for each property and share it with your tenants. They'll be able to
                             join and start using the app immediately.</p>
+                    </div>
+                    <div class="step-image-container">
                         <picture>
                             <img src="images/Invite_Tenants.png" alt="Invite tenants screen">
                         </picture>
@@ -103,76 +183,80 @@
                 </div>
 
                 <div class="step-card">
-                    <div class="step-number">4</div>
                     <div class="step-content">
+                        <div class="step-number">4</div>
                         <h3>Track Payments</h3>
                         <p>Navigate to the Payments tab to view all rent transactions. You'll see payment history,
                             upcoming due dates, and any overdue payments.</p>
+                    </div>
+                    <div class="step-image-container">
                         <picture>
                             <source srcset="images/payments-dark.png" media="(prefers-color-scheme: dark)">
                             <img src="images/payments.png" alt="Payments dashboard">
                         </picture>
                     </div>
                 </div>
-            </div>
 
-            <div class="step-card">
-                <div class="step-number">5</div>
-                <div class="step-content">
-                    <h3>Handle Maintenance</h3>
-                    <p>When tenants submit maintenance requests, you'll receive a notification. View photos, add notes,
-                        and update the status as you work on repairs.</p>
-                    <picture>
-                        <source srcset="images/MR-list-dark.png" media="(prefers-color-scheme: dark)">
-                        <img src="images/MR-list.png" alt="Maintenance dashboard">
-                    </picture>
+                <div class="step-card">
+                    <div class="step-content">
+                        <div class="step-number">5</div>
+                        <h3>Handle Maintenance</h3>
+                        <p>When tenants submit maintenance requests, you'll receive a notification. View photos, add notes,
+                            and update the status as you work on repairs.</p>
+                    </div>
+                    <div class="step-image-container">
+                        <picture>
+                            <source srcset="images/MR-list-dark.png" media="(prefers-color-scheme: dark)">
+                            <img src="images/MR-list.png" alt="Maintenance dashboard">
+                        </picture>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
     </section>
 
-    <!-- For Renters -->
     <section id="renters" class="tutorial-section alt">
         <div class="container">
             <h2 class="section-title">For Renters</h2>
 
-            <div class="tutorial-steps">
                 <div class="step-card">
-                    <div class="step-number">1</div>
                     <div class="step-content">
+                        <div class="step-number">1</div>
                         <h3>Join Your Property</h3>
                         <p>Download the Roof app and create your account. Use the invite link provided by your landlord
                             to join your property.</p>
+                    </div>
+                    <div class="step-image-container">
                         <picture>
-                            <source srcset="images\Join_Your_Property.png" media="(prefers-color-scheme: dark)">
-                            <img src="images\Join_Your_Property.png" alt="Join Property">
+                            <source srcset="images/Join_Your_Property.png" media="(prefers-color-scheme: dark)">
+                            <img src="images/Join_Your_Property.png" alt="Join Property">
                         </picture>
                     </div>
                 </div>
 
                 <div class="step-card">
-                    <div class="step-number">2</div>
                     <div class="step-content">
+                        <div class="step-number">2</div>
                         <h3>View Property Details</h3>
                         <p>On your home screen, you'll see your property information, upcoming rent due date, and recent
                             updates.</p>
-                        <!-- Replace with: <img src="images/tutorial/renter-home.png" alt="Renter home screen"> -->
+                    </div>
+                    <div class="step-image-container">
                         <picture>
-                            <source srcset="images\View_Property_Details_Renter.png"
-                                media="(prefers-color-scheme: dark)">
+                            <source srcset="images\View_Property_Details_Renter.png" media="(prefers-color-scheme: dark)">
                             <img src="images\View_Property_Details_Renter.png" alt="Your Property Screen">
                         </picture>
                     </div>
                 </div>
 
                 <div class="step-card">
-                    <div class="step-number">3</div>
                     <div class="step-content">
+                        <div class="step-number">3</div>
                         <h3>Submit Maintenance Requests</h3>
                         <p>Need something fixed? Navigate to the Maintenance tab and create a new request. Describe the
                             issue, add photos, and submit.</p>
-                        <!-- Replace with: <img src="images/tutorial/submit-request.png" alt="Submit maintenance request"> -->
+                    </div>
+                    <div class="step-image-container">
                         <picture>
                             <source srcset="images\Submit_Maintenance_Requests_Renter.pngg"
                                 media="(prefers-color-scheme: dark)">
@@ -182,12 +266,13 @@
                 </div>
 
                 <div class="step-card">
-                    <div class="step-number">4</div>
                     <div class="step-content">
+                        <div class="step-number">4</div>
                         <h3>Track Requests</h3>
                         <p>All your maintenance requests are saved in the Maintenance tab. You'll receive notifications
                             when the status updates.</p>
-                        <!-- Replace with: <img src="images/tutorial/track-requests.png" alt="Track requests screen"> -->
+                    </div>
+                    <div class="step-image-container">
                         <picture>
                             <source srcset="images\Track_Requests_Renter.png" media="(prefers-color-scheme: dark)">
                             <img src="images\Track_Requests_Renter.png" alt="Track Requests">
@@ -195,26 +280,26 @@
                     </div>
                 </div>
 
-                <div class="step-card">
-                    <div class="step-number">5</div>
+                <div class="step-card community-step">
                     <div class="step-content">
+                        <div class="step-number">5</div>
                         <h3>Connect with Community</h3>
                         <p>Use the Community tab to connect with other tenants and stay updated on property events.</p>
-                        <!-- Replace with: <img src="images/tutorial/community.png" alt="Community screen"> -->
-                        <picture>
-                            <source srcset="images\Connect-with_Community.png" media="(prefers-color-scheme: dark)">
-                            <img src="images\Connect-with_Community.png" alt="Community">
-                        </picture>
+                        
+                        <div class="step-image-container">
+                            <picture>
+                                <source srcset="images\Connect-with_Community.png" media="(prefers-color-scheme: dark)">
+                                <img src="images\Connect-with_Community.png" alt="Community">
+                            </picture>
+                        </div>
 
-                        <!-- Hidden additional content -->
                         <div class="step-additional-content" id="communityAdditionalContent">
                             <h4>Community Features</h4>
                             <ul class="feature-list-detail">
                                 <li>Assign chores and keep shared to-do lists up to date</li>
                                 <li>Collaborate on grocery runs with live shopping lists</li>
                                 <li>Reserve shared amenities without double booking</li>
-                                <li>Track expenses, view healthy food reports, and sync items to the shared grocery list
-                                </li>
+                                <li>Track expenses, view healthy food reports, and sync items to the shared grocery list</li>
                             </ul>
                             <div class="community-photo-grid">
                                 <figure class="community-photo">
@@ -244,41 +329,143 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <div class="faq-list">
+                <!-- Payments & Stripe -->
+                <div class="faq-item">
+                    <h3>How do I connect my Stripe account to receive payments?</h3>
+                    <p>To connect your Stripe account:</p>
+                    <ol>
+                        <li>Go to your <strong>Profile</strong> tab</li>
+                        <li>Tap <strong>Stripe Account</strong> to edit your Stripe ID</li>
+                        <li>Enter your Stripe account ID to link your account</li>
+                        <li>Once connected, you'll automatically receive rent payments to your linked bank account</li>
+                    </ol>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What payment methods can tenants use?</h3>
+                    <p>Tenants can pay rent using credit cards (Visa, Mastercard, American Express). All payments are processed securely through Stripe.</p>
+                </div>
+
+                <!-- Account & Setup -->
+                <div class="faq-item">
+                    <h3>Can I switch between landlord and renter accounts?</h3>
+                    <p>Currently, each account is tied to a single role (landlord or renter). If you need both roles, you can create a separate account with a different email address.</p>
+                </div>
+
+                <!-- Maintenance -->
+                <div class="faq-item">
+                    <h3>How do I track maintenance request status?</h3>
+                    <p>All maintenance requests go through these statuses:</p>
+                    <ul>
+                        <li><strong>Open</strong> – Request received and awaiting review</li>
+                        <li><strong>In Progress</strong> – Landlord is working on the issue</li>
+                        <li><strong>Completed</strong> – Issue has been resolved</li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can I add photos to maintenance requests?</h3>
+                    <p>Yes! When creating a maintenance request, you can add multiple photos to help describe the issue. This helps landlords understand the problem before visiting. You can take new photos or select existing ones from your camera roll.</p>
+                </div>
+
+                <!-- Community Features -->
+                <div class="faq-item">
+                    <h3>What can I do with community features?</h3>
+                    <p>The Community tab helps roommates coordinate daily life:</p>
+                    <ul>
+                        <li><strong>Shared To-Do Lists</strong> – Create and assign chores</li>
+                        <li><strong>Grocery Lists</strong> – Collaborate on shopping lists in real-time</li>
+                        <li><strong>Amenity Reservations</strong> – Book shared spaces like laundry rooms or common areas</li>
+                        <li><strong>Expense Tracking</strong> – Split and track shared expenses</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <section class="cta">
         <div class="container">
             <div class="cta-content">
                 <h2>Ready to Raise the Roof?</h2>
                 <p>Download Roof and simplify your property management today</p>
                 <div class="download-buttons">
-                    <!-- Replace # with your TestFlight link -->
-                    <a href="#" class="btn btn-primary btn-large">Join TestFlight Beta</a>
-                    <!-- Replace # with your Google Play Store or APK download link -->
-                    <a href="#" class="btn btn-primary btn-large">Download for Android</a>
+                    <a href="https://testflight.apple.com/join/YNEKXPEj" 
+                    class="btn btn-primary btn-large" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                    Join TestFlight Beta
+                    </a>
+
+                    <a href="https://drive.google.com/drive/folders/1TojejftaxAUIUoE_wD7cv5zmzA2aaxBh?usp=sharing" 
+                    class="btn btn-primary btn-large" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                    Download for Android
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>Roof</h4>
-                    <p>Property management made simple.</p>
+                    <p>Property management under one roof.</p>
                 </div>
                 <nav class="footer-nav">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
+                    <a href="index.html">About</a>
+                    <a href="team.html">Team</a>
                     <a href="tutorial.html">Tutorial</a>
+                    <a href="index.html#download">Download</a>
                 </nav>
             </div>
         </div>
     </footer>
 
     <script>
-        // Handle "See More" button for Community section
+        // Hamburger Menu Logic
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const links = document.querySelectorAll('.nav-links a');
+
+        // Toggle menu
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+            
+            // Change icon from ☰ to ✕
+            if (navLinks.classList.contains('show')) {
+                hamburger.innerHTML = '&#10005;'; // X symbol
+            } else {
+                hamburger.innerHTML = '&#9776;'; // Hamburger symbol
+            }
+        });
+
+        // Close menu when a link is clicked
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('show');
+                hamburger.innerHTML = '&#9776;';
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                navLinks.classList.remove('show');
+                hamburger.innerHTML = '&#9776;';
+            }
+        });
+
+        // Community "See More" Logic
         document.addEventListener('DOMContentLoaded', function () {
             const communitySeeMoreBtn = document.getElementById('communitySeeMoreBtn');
             const communityAdditionalContent = document.getElementById('communityAdditionalContent');
@@ -299,5 +486,4 @@
         });
     </script>
 </body>
-
 </html>
